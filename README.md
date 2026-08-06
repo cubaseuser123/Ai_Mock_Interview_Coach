@@ -1,25 +1,25 @@
 # AI Mock Interview Coach
 
-Here is my submission for the AI Prototype Engineer internship assignment. 
+This is my submission for the AI Prototype Engineer internship assignment. 
 
-The goal was to build a multi-agent system that runs a realistic mock interview and delivers actionable coaching feedback. I built this terminal-based Mock Interview Coach using LangGraph to tackle that exact problem. 
+The prompt asked for a multi-agent system that runs a realistic mock interview and gives useful feedback. Most mock interview bots just read from a static list of questions. I wanted to build something that actually escalates — an interviewer that digs into your answers, probes weak spots, and calibrates difficulty mid-chat.
 
-Instead of a static list of canned questions, I wanted the system to mimic how real interviews escalate — where the interviewer digs into specific answers, probes weak spots, and calibrates difficulty on the fly.
+To do this, I built a terminal-based CLI using LangGraph.
 
 ## What it does
 
-You feed it your target role, experience level, and focus area. The system orchestrates four specific agents to run the session:
+You provide a target role, experience level, and focus area. Four agents run the session:
 
-- **Planner Agent:** Scrapes recent interview trends from Reddit and technical blogs to set a realistic strategy before the interview starts.
-- **Interviewer Agent:** Drives the conversation. It maintains context, listens to your answers, and pushes back for deeper technical details or STAR-method examples.
-- **Evaluator Agent:** Grades your answers silently in the background after the interview concludes.
-- **Coach Agent:** Translates the raw evaluation into a supportive, actionable debrief report.
+- **Planner Agent:** Scrapes Reddit and tech blogs via Jina Reader to set the interview strategy.
+- **Interviewer Agent:** Drives the chat. It tracks context and pushes back for deeper technical details or STAR examples.
+- **Evaluator Agent:** Grades the transcript in the background after you finish.
+- **Coach Agent:** Turns that raw grading into a debrief report.
 
-(Side note: The evaluation and coaching happen offline at the end. I avoided real-time feedback so the experience feels like a fluid conversation rather than a rigid exam.)
+(Side note: I moved evaluation and coaching to the end. Giving real-time feedback after every answer breaks the flow of a real interview.)
 
 ## The Architecture
 
-The orchestration runs on a LangGraph state machine. 
+The state machine runs on LangGraph.
 
 ```mermaid
 graph TD
@@ -63,14 +63,14 @@ graph TD
 
 ## Example Transcripts
 
-I ran the system against a few different candidate profiles to see how it adapts. You can read the raw Markdown outputs here:
+I ran the system against three candidate profiles. You can read the raw Markdown outputs here:
 
 1. **[The Weak Candidate (Intern Backend Engineer)](transcripts/2026-08-06_22-32_Backend_Engineer.md)**
-   A junior candidate who struggles with technical depth. The Interviewer probes for basics, and the Coach provides foundational learning resources.
+   A junior candidate who struggles with technical depth. The Interviewer probes for basics; the Coach provides foundational resources.
 2. **[The Strong Candidate (Senior Backend Engineer)](transcripts/2026-08-06_22-45_Backend_Engineer.md)**
    A senior engineer who nails the architecture questions. The Interviewer escalates difficulty to find their ceiling.
 3. **[The Edge Case (Senior Data Scientist - Mixed)](transcripts/2026-08-06_23-28_Data_Scientist.md)**
-   A candidate with great behavioral answers but massive operational red flags. The Coach report praises the STAR method while critiquing the lack of MLOps maturity.
+   A candidate with solid behavioral answers but major operational red flags. The Coach report praises the STAR method while calling out the lack of MLOps maturity.
 
 ## Setup & Run
 
@@ -92,4 +92,4 @@ I ran the system against a few different candidate profiles to see how it adapts
    python main.py
    ```
 
-Happy to tweak the prompts or the LangGraph structure if anyone has ideas. Let me know what you think!
+That's the core loop. The code is modular enough to swap in different prompts or state logic if needed.
