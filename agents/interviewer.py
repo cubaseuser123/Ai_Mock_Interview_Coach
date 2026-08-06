@@ -3,7 +3,7 @@ agents/interviewer.py — The Interviewer agent.
 """
 from graph.state import InterviewState
 from utils.llm import get_llm
-from utils.helpers import read_prompt, format_history
+from utils.helpers import read_prompt, format_history, extract_text
 from langchain_core.prompts import PromptTemplate
 
 def interviewer_node(state: InterviewState) -> dict:
@@ -26,7 +26,7 @@ def interviewer_node(state: InterviewState) -> dict:
     )
 
     response = llm.invoke(formatted_prompt) #not using pydantic schema here we need a free form question from the llm
-    interviewer_text = response.content 
+    interviewer_text = extract_text(response.content)
 
     return{
         "conversation_history" : [{"role" : "interviewer", "text" : interviewer_text}] #just appending this one field to the conversation history list[dict]

@@ -17,3 +17,8 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger("InterviewCoach")
+
+# Suppress noisy SDK loggers — we only want our own logs visible
+logging.getLogger("google_genai").setLevel(logging.WARNING)
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("google.auth").setLevel(logging.WARNING)

@@ -30,3 +30,22 @@ def format_history(history: list[dict]) -> str:
         text = msg["text"] 
         lines.append(f"{role}: {text}")
     return "\n".join(lines)
+
+
+def extract_text(content) -> str:
+    """
+    Safely extracts a clean string from LLM responses.
+    Handles plain strings, lists of content blocks (e.g. Gemini 3.5 reasoning signatures),
+    and dict objects.
+    """
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = []
+        for item in content:
+            if isinstance(item, str):
+                parts.append(item)
+            elif isinstance(item, dict) and "text" in item:
+                parts.append(item["text"])
+        return "".join(parts).strip()
+    return str(content)

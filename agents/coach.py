@@ -3,7 +3,7 @@ agents/coach.py — The Coach agent.
 """
 from graph.state import InterviewState 
 from utils.llm import get_llm
-from utils.helpers import read_prompt
+from utils.helpers import read_prompt, extract_text
 from langchain_core.prompts import PromptTemplate
 import json 
 
@@ -16,6 +16,7 @@ def coach_node(state: InterviewState) -> dict:
 
     formatted = prompt.format(
         target_role = state["target_role"],
+        focus_area = state.get("focus_area", "mixed"),
         evaluation_result = json.dumps({
             "scores" : state.get("per_answer_scores", []),
             "summary" : state.get("overall_assessment", "")
@@ -23,4 +24,4 @@ def coach_node(state: InterviewState) -> dict:
     ) #used json dumps string so that it is easily readable for the LLM. 
 
     result = llm.invoke(formatted) #no pydantic here too we need free form markdown text 
-    return {"coaching_report" : result.content}
+    return {"coaching_report" : extract_text(result.content)}
