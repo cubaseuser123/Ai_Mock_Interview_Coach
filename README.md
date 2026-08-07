@@ -15,7 +15,7 @@ You provide a target role, experience level, and focus area. Four agents run the
 - **Evaluator Agent:** Grades the transcript in the background after you finish.
 - **Coach Agent:** Turns that raw grading into a debrief report.
 
-(Side note: I moved evaluation and coaching to the end. Giving real-time feedback after every answer breaks the flow of a real interview.)
+
 
 ## The Architecture
 
@@ -59,7 +59,19 @@ graph TD
     Coach -->|Final Debrief| End
 ```
 
-*(Another tradeoff: The edge condition controlling the loop — `CheckTurns` — is a deterministic Python function, not an LLM decision. LLM routing in state machines gets messy fast. A hard turn cap keeps the UX predictable.)*
+## Key Design Decisions & Tradeoffs
+
+1. **Deterministic Edge Routing vs LLM Routing**
+   The edge condition controlling the interview loop (`CheckTurns`) is a standard Python function based on a turn limit, not an LLM routing node. 
+   *Tradeoff:* An LLM router could theoretically end the interview naturally when it "feels" complete, but LLM routing in state machines is prone to early exits or infinite loops. A hard turn cap guarantees a predictable UX.
+
+2. **Offline Evaluator vs Real-time Feedback**
+   The Evaluator and Coach agents run in the background after the interview finishes, rather than interrupting the user after every answer. 
+   *Tradeoff:* Real-time grading provides immediate correction, but it turns the experience into a rigid exam. Batching the feedback at the end preserves the flow of a realistic conversation.
+
+3. **Web-Grounded Planner**
+   The Planner agent calls the Jina Reader API to fetch real-world interview trends before finalizing the strategy.
+   *Tradeoff:* This adds a few seconds of initial latency at startup, but it prevents the AI from defaulting to stale, generic Leetcode templates.
 
 ## Example Transcripts
 
