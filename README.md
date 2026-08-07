@@ -59,6 +59,15 @@ graph TD
     Coach -->|Final Debrief| End
 ```
 
+## The Prompts
+
+Getting the agents to behave like real humans required heavy prompt engineering. The raw files live in the `prompts/` directory.
+
+- **`planner.md`:** Uses few-shot examples to teach the LLM how to translate a generic job title into a 5-point grading rubric.
+- **`interviewer.md`:** Forces the agent to output a single, direct question. It includes a "Hard Cap Rule" that forces the interviewer to pivot after two follow-ups, preventing conversational loops.
+- **`evaluator.md`:** Demands specific quotes from the transcript to justify every grade. It outputs strict JSON for the state machine to parse.
+- **`coach.md`:** Built to give feedback using the STAR method. It relies on XML sandwiching to process the entire conversation history without dropping the core formatting instructions.
+
 ## Key Design Decisions & Tradeoffs
 
 1. **Deterministic Edge Routing vs LLM Routing**
@@ -72,6 +81,10 @@ graph TD
 3. **Web-Grounded Planner**
    The Planner agent calls the Jina Reader API to fetch real-world interview trends before finalizing the strategy.
    *Tradeoff:* This adds a few seconds of initial latency at startup, but it prevents the AI from defaulting to stale, generic Leetcode templates.
+
+4. **XML Tagging & Prompt Sandwiching**
+   All agent prompts use XML tags (e.g., `<conversation_history>`) to isolate user data from system instructions. I also use "prompt sandwiching" — placing the most critical constraints at the very bottom of the prompt. 
+   *Tradeoff:* It makes the prompt files slightly longer, but it drastically reduces hallucination and instruction-drift during long, multi-turn contexts.
 
 ## Example Transcripts
 
