@@ -2,6 +2,7 @@
 utils/helpers.py — Shared utility functions used by multiple agents.
 """
 import os 
+import hashlib 
 
 def read_prompt(filename: str, caller_file: str) -> str:
     """
@@ -15,6 +16,20 @@ def read_prompt(filename: str, caller_file: str) -> str:
     path = os.path.join(project_root, "prompts", filename)
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
+
+def compute_prompt_version() -> str:
+    """Short hash of prompts/ - changes whenever any prompt file changes."""
+    prompts_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "prompts")
+    hasher = hashlib.sha256()
+
+    for filename in sorted(os.listdir(prompts_dir)):
+        if not filename.endswith(".md"):
+            continue 
+        hasher.update(filename.encode("utf-8"))
+        with open(os.path.join(prompts_dir, filename), "rb") as f:
+            hasher.update(f.read())
+            
+    return hasher.hexdigest()[:8]
     
 def format_history(history: list[dict]) -> str:
     """
