@@ -71,8 +71,8 @@ Getting the agents to behave like real humans required heavy prompt engineering.
 ## Key Design Decisions & Tradeoffs
 
 1. **Deterministic Edge Routing vs LLM Routing**
-   The edge condition controlling the interview loop (`CheckTurns`) is a standard Python function based on a turn limit, not an LLM routing node. 
-   *Tradeoff:* An LLM router could theoretically end the interview naturally when it "feels" complete, but LLM routing in state machines is prone to early exits or infinite loops. A hard turn cap guarantees a predictable UX.
+   The edge condition controlling the interview loop (`CheckTurns`) is a standard Python function, not an LLM routing node. The interviewer *can* end the interview early by emitting an `INTERVIEW_COMPLETE` sentinel, but the deterministic hard turn cap stays as the guaranteed backstop.
+   *Tradeoff:* Pure LLM routing in state machines is prone to early exits or infinite loops. Layering an LLM "early exit" signal on top of a deterministic hard cap gets adaptivity (short interviews when the candidate is clearly strong or unrecoverable) without risking a hang. The LLM proposes, the hard cap disposes.
 
 2. **Offline Evaluator vs Real-time Feedback**
    The Evaluator and Coach agents run in the background after the interview finishes, rather than interrupting the user after every answer. 

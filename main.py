@@ -9,6 +9,7 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.markdown import Markdown
 from rich.rule import Rule
+from utils.resume import extract_resume_text
 
 console = Console()
 
@@ -70,6 +71,29 @@ def save_transcript(target_role: str, experience: str, focus: str, conversation_
 
     return filename
 
+def get_resume_content() -> str:
+    """
+    Asks for an optional resume PDF and returns its extracted text.
+
+    Returns "" when the user skips. On any validation error, prints a
+    friendly warning and re-prompts — the interview must never crash
+    because of a bad file path.
+    """
+    resume_path = console.input("[cyan]Resume PDF path (press Enter to skip): [/cyan]").strip()
+
+    while resume_path:
+        try:
+            resume_text = extract_resume_text(resume_path)
+            console.print(f"[dim]Read {len(resume_text)} characters from resume.[/dim]")
+            return resume_text
+        except ValueError as e:
+            console.print(f"[yellow]{e}[/yellow]")
+            resume_path = console.input(
+                "[cyan]Try another path (or press Enter to skip): [/cyan]"
+            ).strip()
+
+    return ""
+
 
 def main():
     print_welcome()
@@ -79,6 +103,7 @@ def main():
     experience  = console.input("[cyan]Experience level (intern/junior/mid/senior): [/cyan]")
     focus       = console.input("[cyan]Focus area (behavioral/technical/case/mixed): [/cyan]")
     background  = console.input("[cyan]Brief background or resume snippet (press Enter to skip): [/cyan]")
+    resume_content = get_resume_content()
 
     # [TEACHING COMMENT]
     # We provide ALL state keys that our graph expects.
@@ -90,7 +115,7 @@ def main():
         "focus_area": focus,
         "background": background,
         "specific_topics": [],
-        "resume_content": "",
+        "resume_content": resume_content,  # "" when the user skipped
         "conversation_history": [],
         "current_turn": 0,
         "max_turns": 5,
@@ -123,6 +148,13 @@ def main():
                     if value.get("current_turn", 0) >= initial_state["max_turns"]:
                         console.print(
                             "\n[dim]That was your final answer. "
+                            "Evaluating your performance — this may take a moment...[/dim]\n"
+                        )
+                if key == "interviewer":
+                    # The interviewer can end the session early (dynamic turns).
+                    if value.get("interview_complete", False):
+                        console.print(
+                            "\n[dim]Interview complete. "
                             "Evaluating your performance — this may take a moment...[/dim]\n"
                         )
                 if key == "coach":
