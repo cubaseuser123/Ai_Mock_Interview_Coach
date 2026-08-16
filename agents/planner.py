@@ -13,13 +13,18 @@ def planner_node(state: InterviewState) -> dict:
     llm = get_llm().with_structured_output(InterviewPlan) #forcing strict pydantic schema to the llm response 
     trends = search_interview_trends(state["target_role"]) #web search with jinareader to find trends
 
+    resume_text = state.get("resume_content", " ")
+    if not resume_text.strip():
+        resume_text = "No resume provided. Plan from the role and area alone."
+
     template = read_prompt("planner.md", __file__)
     prompt = PromptTemplate.from_template(template)
     formatted_prompt = prompt.format(
         target_role = state["target_role"],
         focus_area = state["focus_area"],
         experience_level = state["experience_level"],
-        trending_topics = trends 
+        trending_topics = trends,
+        resume_content = resume_text 
     )
 
     result = llm.invoke(formatted_prompt) #LLM call but with the strict schema defined

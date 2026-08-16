@@ -50,7 +50,7 @@ def save_transcript(target_role: str, experience: str, focus: str, conversation_
 
     os.makedirs("transcripts", exist_ok=True)
     with open(filename, "w", encoding="utf-8") as f:
-        f.write(f"# Mock Interview Transcript\n\n")
+        f.write("# Mock Interview Transcript\n\n")
         f.write(f"- **Role:** {target_role}\n")
         f.write(f"- **Experience Level:** {experience}\n")
         f.write(f"- **Focus Area:** {focus}\n")

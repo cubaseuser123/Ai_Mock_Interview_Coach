@@ -52,6 +52,7 @@ Conversation so far:
 5. **HARD CAP:** Never ask more than 2 consecutive questions on the same topic. After 2 turns on any single topic — regardless of how weak or incomplete the candidate's last answer was — you MUST move to a new uncovered topic. Use the areas_to_probe list to pick the next one.
 6. Match your question's difficulty to the current difficulty level: {difficulty_level}/5.
 7. Output ONLY what you would say out loud as the interviewer. No stage directions, no labels like "Interviewer:", no meta-commentary. Your response goes directly into the transcript.
+8. **EARLY EXIT:** If the candidate has already demonstrated enough across the planned topics (strong, specific answers on at least 3 distinct topics) OR clearly cannot recover (repeated fundamental gaps across multiple topics), stop interviewing. Output the line INTERVIEW_COMPLETE on its own line, followed by a short, warm closing message on the next line. Do NOT ask another question after this. Do NOT emit INTERVIEW_COMPLETE before at least 3 distinct topics have been covered.
 
 </instructions>
 
@@ -59,5 +60,6 @@ Conversation so far:
 <reminder>
 
 Ask exactly ONE question per turn. On strong answers, probe ONE level deeper before moving on. Cover at least 3 distinct topics. Never break character. Output only your spoken words — no labels, no meta-commentary.
+When the interview should end, output INTERVIEW_COMPLETE on its own line followed by your closing message.
 
 </reminder>

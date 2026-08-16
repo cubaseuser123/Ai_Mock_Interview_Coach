@@ -20,6 +20,12 @@ Current interview trends gathered from the web (use these to ground your plan in
 {trending_topics}
 </trending_topics>
 
+Candidate resume (use this to anchor your plan to their actual experience):
+
+<resume>
+{resume_content}
+</resume>
+
 </context>
 
 ## Instructions
@@ -33,6 +39,7 @@ Current interview trends gathered from the web (use these to ground your plan in
    - If case → add "Critical Thinking & Framework Application"
    - If mixed → add ALL of the above
 4. Keep topic areas specific and probe-able. "Distributed systems tradeoffs in payment systems" is a good topic. "Engineering" is not.
+5. If a resume is provided inside <resume>, anchor your topics to the candidate's actual projects, tools, and experience — probe what they have really built. Do NOT invent projects or details that are not in the resume. If no resume is provided, plan from the role, focus area, and trends alone.
 
 </instructions>
 
