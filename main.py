@@ -135,12 +135,17 @@ def main():
     console.print("\n[dim]Searching for current interview trends and building your plan...[/dim]")
     graph = build_graph()
 
+    conversation_history = []
+
     try:
         # We use stream() so the workflow yields at each step,
         # allowing us to print progress or intercept.
         for output in graph.stream(initial_state, {"recursion_limit": 50}):
             # Identify which node just ran
             for key, value in output.items():
+                # Accumulate the interview so far — each node appends its
+                # messages to state's conversation_history (operator.add).
+                conversation_history.extend(value.get("conversation_history", []))
                 if key == "planner":
                     console.print("[dim]Interview plan ready. Starting your interview...[/dim]\n")
                 if key == "human_input":
@@ -162,7 +167,7 @@ def main():
                     print_report(report_content)
 
                     # Save to file
-                    saved_path = save_transcript(target_role, experience, focus, [], report_content)
+                    saved_path = save_transcript(target_role, experience, focus, conversation_history, report_content)
                     console.print(f"\n[bold green]✓ Report saved to {saved_path}[/bold green]\n")
 
     except KeyboardInterrupt:

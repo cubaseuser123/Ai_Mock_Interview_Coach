@@ -38,3 +38,8 @@ share/python-wheels/
 
 # MacOS
 .DS_Store
+
+# Custom ignores
+docs/
+graphify-out/
+.claude/

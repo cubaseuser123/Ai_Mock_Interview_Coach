@@ -7,43 +7,42 @@ from agents.planner import planner_node
 from agents.interviewer import interviewer_node
 from agents.evaluator import evaluator_node
 from agents.coach import coach_node
-from rich.console import Console 
+from rich.console import Console
 
 console = Console()
 
+
 def human_input_node(state: InterviewState) -> dict:
     """
-    Prompts the human in the terminal for their answer.
+    Collects the candidate's typed answer.
 
-    This node is NOT an AI agent. It simply:
-    1. Prints the last interviewer question
-    2. Collects the user's typed response
-    3. Returns the response as a new conversation history entry
+    This node is not an AI agent. It only reads keyboard input. The
+    interviewer question is already streamed live by interviewer_node, so
+    there is no need to re-print it here.
     """
-    last_message = state["conversation_history"][-1]["text"]
-    console.print(f"\n[bold cyan]Interviewer:[/bold cyan]{last_message}")
+    if state.get("interview_complete", False):
+        return {}
 
     user_text = console.input("\n[bold green]You:[/bold green] ")
-
     current = state.get("current_turn", 0)
 
-    return{
-        "conversation_history" : [{"role" : "candidate", "text" : user_text}],
-        "current_turn" : current + 1
+    return {
+        "conversation_history": [{"role": "candidate", "text": user_text}],
+        "current_turn": current + 1
     }
-    
+
 
 def should_continue(state: InterviewState) -> str:
     """
-    Conditional edge logic: checks if we have hit the max turns.
-    If yes, go to the evaluator. If no, loop back to the interviewer.
+    Conditional edge: end the interview when the interviewee says it is
+    complete OR when we hit the hard turn cap — whichever comes first.
 
     This is a plain Python function — NOT an LLM call. This is a deliberate
-    design choice because LLM-based routing is non-deterministic and could
-    loop forever or exit early. 
+    design choice: the LLM gets to say we are done early, but the hard cap
+    still exists as a backstop.
     """
 
-    if state["current_turn"] >= state["max_turns"]:
+    if state["interview_complete"] or state["current_turn"] >= state["max_turns"]:
         return "evaluator"
     return "interviewer"
 
@@ -66,8 +65,8 @@ def build_graph():
         "human_input",
         should_continue,
         {
-            "interviewer" : "interviewer",
-            "evaluator" : "evaluator"
+            "interviewer": "interviewer",
+            "evaluator": "evaluator"
         }
     )
 
