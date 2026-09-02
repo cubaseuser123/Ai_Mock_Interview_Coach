@@ -6,10 +6,12 @@ This module just takes a PDF from the disk and turns it into a plain string the 
 import os 
 import pymupdf
 from config import logger 
+from langsmith import traceable
 
 MAX_RESUME_PAGES = 5 
 MAX_RESUME_CHARS = 8000
 
+@traceable(run_type="tool")
 def extract_resume_text(path : str) -> str: 
     """
     Reads a PDF resume and returns its text. 

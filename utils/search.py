@@ -3,7 +3,9 @@ utils/search.py — Simple web scraper using Jina Reader.
 """
 import httpx
 from config import logger
+from langsmith import traceable
 
+@traceable(run_type="tool")
 def search_interview_trends(role: str) -> str:
     # Reddit r/cscareerquestions gives real, recent candidate experiences
     # with actual questions being asked — much higher signal than HN threads.

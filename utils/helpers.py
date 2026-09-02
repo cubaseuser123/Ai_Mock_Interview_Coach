@@ -17,6 +17,7 @@ def read_prompt(filename: str, caller_file: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
+#we are tracking prompt version changes here based on the hashing that we have done. this is for observability experiments when prompts get changed. 
 def compute_prompt_version() -> str:
     """Short hash of prompts/ - changes whenever any prompt file changes."""
     prompts_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "prompts")

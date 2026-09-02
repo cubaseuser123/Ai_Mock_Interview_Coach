@@ -10,6 +10,8 @@ from rich.panel import Panel
 from rich.markdown import Markdown
 from rich.rule import Rule
 from utils.resume import extract_resume_text
+from config import LANGSMITH_PROJECT, LANGSMITH_TRACING
+from utils.helpers import compute_prompt_version
 
 console = Console()
 
@@ -132,6 +134,12 @@ def main():
         "final_output": ""
     }
 
+    prompt_version = compute_prompt_version()
+
+    if LANGSMITH_TRACING:
+        console.print(
+            f"[dim]LangSmith tracing on -> project '{LANGSMITH_PROJECT}'. prompts v{prompt_version}[/dim]"
+        )
     console.print("\n[dim]Searching for current interview trends and building your plan...[/dim]")
     graph = build_graph()
 
@@ -140,7 +148,17 @@ def main():
     try:
         # We use stream() so the workflow yields at each step,
         # allowing us to print progress or intercept.
-        for output in graph.stream(initial_state, {"recursion_limit": 50}):
+        run_config = {
+            "recursion_limit" : 50,
+            "metadata" : {
+                "target_role" : target_role,
+                "experience_level" : experience,
+                "focus_area" : focus,
+                "prompt_version" : prompt_version,
+            },
+            "tags" : ["mock-interview"],
+        }
+        for output in graph.stream(initial_state, run_config):
             # Identify which node just ran
             for key, value in output.items():
                 # Accumulate the interview so far — each node appends its
