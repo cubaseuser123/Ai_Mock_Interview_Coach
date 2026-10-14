@@ -51,8 +51,11 @@ def format_history(history: list[dict]) -> str:
 def extract_text(content) -> str:
     """
     Safely extracts a clean string from LLM responses.
-    Handles plain strings, lists of content blocks (e.g. Gemini 3.5 reasoning signatures),
-    and dict objects.
+    Handles plain strings, lists of content blocks (e.g. Claude thinking blocks,
+    which carry no "text" key and are skipped), and dict objects.
+
+    Not stripped: streamed chunks arrive as content-block lists, and stripping
+    each chunk would delete the spaces between words. Callers strip if needed.
     """
     if isinstance(content, str):
         return content
@@ -63,5 +66,5 @@ def extract_text(content) -> str:
                 parts.append(item)
             elif isinstance(item, dict) and "text" in item:
                 parts.append(item["text"])
-        return "".join(parts).strip()
+        return "".join(parts)
     return str(content)

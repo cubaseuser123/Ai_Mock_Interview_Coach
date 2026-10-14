@@ -2,14 +2,14 @@
 agents/evaluator.py — The Evaluator agent.
 """
 from graph.state import InterviewState
-from utils.llm import get_llm
+from utils.llm import get_llm, with_structured_output
 from utils.helpers import read_prompt, format_history
 from models.schemas import EvaluationResult
-from langchain_core.prompts import PromptTemplate 
+from langchain_core.prompts import PromptTemplate
 
 def evaluator_node(state: InterviewState) -> dict:
     """Scores all Q&A pairs from the interview."""
-    llm = get_llm(temperature=0.2).with_structured_output(EvaluationResult) #has to be pydantic schema again
+    llm = with_structured_output(get_llm(temperature=0.2), EvaluationResult) #has to be pydantic schema again
 
     history_str = format_history(state["conversation_history"])
 

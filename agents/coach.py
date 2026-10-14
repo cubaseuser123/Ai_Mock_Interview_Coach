@@ -24,4 +24,4 @@ def coach_node(state: InterviewState) -> dict:
     ) #used json dumps string so that it is easily readable for the LLM. 
 
     result = llm.invoke(formatted) #no pydantic here too we need free form markdown text 
-    return {"coaching_report" : extract_text(result.content)}
+    return {"coaching_report" : extract_text(result.content).strip()}

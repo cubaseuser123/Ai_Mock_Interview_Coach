@@ -5,12 +5,10 @@ import os
 import logging 
 from dotenv import load_dotenv
 
-load_dotenv()
-
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-
-if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY not found in env variables.")
+# override=True: values in .env win over stale keys left in the OS environment.
+# Model provider settings (LLM_PROVIDER, GROQ_API_KEY, ANTHROPIC_API_KEY, ...)
+# are read in utils/llm.py.
+load_dotenv(override=True)
 
 logging.basicConfig(
     level = logging.INFO,
@@ -29,10 +27,9 @@ if LANGSMITH_TRACING and not LANGSMITH_API_KEY:
         "LANGSMITH_TRACING is true but LANGSMITH_API_KEY is missing -"
         "tracing disabled. The app will continue normally."
     )
-    LANGMITH_TRACING = False 
+    LANGSMITH_TRACING = False
 
 
 # Suppress noisy SDK loggers — we only want our own logs visible
-logging.getLogger("google_genai").setLevel(logging.WARNING)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("google.auth").setLevel(logging.WARNING)
