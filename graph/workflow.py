@@ -47,13 +47,13 @@ def should_continue(state: InterviewState) -> str:
     return "interviewer"
 
 
-def build_graph():
+def build_graph(human_input=human_input_node):
     """Constructs and compiles the LangGraph state machine"""
     workflow = StateGraph(InterviewState)
 
     workflow.add_node("planner", planner_node)
     workflow.add_node("interviewer", interviewer_node)
-    workflow.add_node("human_input", human_input_node)
+    workflow.add_node("human_input", human_input)
     workflow.add_node("evaluator", evaluator_node)
     workflow.add_node("coach", coach_node)
 

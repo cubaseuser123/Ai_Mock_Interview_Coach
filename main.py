@@ -123,6 +123,7 @@ def main():
         "max_turns": 5,
         "difficulty_level": 1,
         "interview_complete": False,
+        "topic_history": [],  # v4 bookkeeping: one topic label per turn
         "candidate_strengths_so_far": [],
         "areas_to_probe": [],
         "evaluation_dimensions": [],
