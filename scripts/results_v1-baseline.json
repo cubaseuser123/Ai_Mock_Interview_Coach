@@ -1,0 +1,212 @@
+{
+  "adversarial": [
+    {
+      "proper_termination": {
+        "score": 0,
+        "comment": ""
+      },
+      "depth_probing": {
+        "score": 0.0,
+        "comment": "The candidate never gave a strong detailed answer, so the interviewer never probed deeper on such an answer."
+      },
+      "topic_cap_respected": {
+        "score": 0.0,
+        "comment": "The interviewer asked six consecutive questions on the same consistency\u2011between\u2011auth\u2011and\u2011billing topic, exceeding the 2\u2011question cap."
+      },
+      "topic_coverage": {
+        "score": 0.5,
+        "comment": "Only two distinct technical topics were covered: microservices/service\u2011boundary design and a relational subscription schema."
+      },
+      "focus_enforcement": {
+        "score": 0.0,
+        "comment": "When the candidate went off\u2011topic or evaded, the interviewer did not redirect back to the original question."
+      },
+      "contextual_listening": {
+        "score": 0.0,
+        "comment": "The interviewer\u2019s follow\u2011ups ignored the specific terms and details the candidate mentioned, asking generic questions instead."
+      },
+      "difficulty_adapts": {
+        "score": 0.0,
+        "comment": "The question difficulty remained static and did not adjust to the candidate\u2019s weak or evasive responses."
+      },
+      "contradiction_caught": {
+        "score": 0.0,
+        "comment": "The candidate contradicted themselves about having a monolith, and the interviewer never called out the inconsistency."
+      }
+    },
+    {
+      "proper_termination": {
+        "score": 0,
+        "comment": ""
+      },
+      "depth_probing": {
+        "score": 0.5,
+        "comment": "Probed deeper once after the initial detailed answer, but then repeatedly pivoted without further probing."
+      },
+      "topic_cap_respected": {
+        "score": 0.0,
+        "comment": "Asked more than three consecutive questions on the same consistency pattern topic."
+      },
+      "topic_coverage": {
+        "score": 0.5,
+        "comment": "Covered two distinct topics (microservice design and observability) but not three."
+      },
+      "focus_enforcement": {
+        "score": 0.0,
+        "comment": "Failed to redirect the candidate\u2019s off\u2011topic or evasive answers and lost control of the conversation."
+      },
+      "contextual_listening": {
+        "score": 0.0,
+        "comment": "Questions remained generic and did not reference the specific terms or details the candidate provided."
+      },
+      "difficulty_adapts": {
+        "score": 0.0,
+        "comment": "Did not adjust question difficulty based on the candidate\u2019s weak or irrelevant responses."
+      },
+      "contradiction_caught": {
+        "score": 0.0,
+        "comment": "Did not call out the candidate\u2019s contradiction about the monolith versus microservices."
+      }
+    }
+  ],
+  "strong": [
+    {
+      "proper_termination": {
+        "score": 0,
+        "comment": ""
+      },
+      "depth_probing": {
+        "score": 1.0,
+        "comment": "After each detailed answer the interviewer asked a deeper follow\u2011up on the same topic before moving on."
+      },
+      "topic_cap_respected": {
+        "score": 0.0,
+        "comment": "The interviewer asked many consecutive questions (more than two) on the same broad microservice reliability topic."
+      },
+      "topic_coverage": {
+        "score": 1.0,
+        "comment": "At least three distinct technical topics (architecture design, reliability/observability, database choices, communication protocols, cross\u2011service consistency) were covered."
+      },
+      "focus_enforcement": {
+        "score": 0.5,
+        "comment": "The interviewer redirected the candidate a few times but also let off\u2011topic answers (e.g., deadlock discussion) go unchallenged."
+      },
+      "contextual_listening": {
+        "score": 1.0,
+        "comment": "Follow\u2011up questions repeatedly referenced specific tools and patterns the candidate just mentioned (Kafka, outbox, idempotency, DLQ, latency metrics, etc.)."
+      },
+      "difficulty_adapts": {
+        "score": 0.5,
+        "comment": "The interviewer escalated difficulty after strong answers but did not simplify after weaker or vague responses."
+      },
+      "contradiction_caught": {
+        "score": 1.0,
+        "comment": "The candidate never contradicted themselves, so no contradictions needed to be addressed."
+      }
+    },
+    {
+      "proper_termination": {
+        "score": 0,
+        "comment": ""
+      },
+      "depth_probing": {
+        "score": 1.0,
+        "comment": "After each detailed answer the interviewer asked a deeper, more specific follow\u2011up before moving on."
+      },
+      "topic_cap_respected": {
+        "score": 0.0,
+        "comment": "The interviewer asked five consecutive questions on the same PostgreSQL/outbox scaling topic, exceeding the 2\u2011question cap."
+      },
+      "topic_coverage": {
+        "score": 1.0,
+        "comment": "The interview covered at least four distinct topics: microservice/database scaling, communication protocol choice, performance profiling, and security incident handling."
+      },
+      "focus_enforcement": {
+        "score": 1.0,
+        "comment": "The interviewer consistently steered the candidate back to concrete details and kept control of the conversation."
+      },
+      "contextual_listening": {
+        "score": 1.0,
+        "comment": "Each follow\u2011up referenced specific terms the candidate just mentioned (e.g., outbox pattern, idempotency keys, blue\u2011green deploys, Redis, pg_locks)."
+      },
+      "difficulty_adapts": {
+        "score": 0.5,
+        "comment": "The interviewer kept probing deeper but did not simplify after vague answers, showing partial but not full adaptation."
+      },
+      "contradiction_caught": {
+        "score": 1.0,
+        "comment": "The candidate never contradicted themselves, so the interviewer correctly had no contradictions to address."
+      }
+    }
+  ],
+  "weak": [
+    {
+      "proper_termination": {
+        "score": 0,
+        "comment": ""
+      },
+      "depth_probing": {
+        "score": 0.5,
+        "comment": "The candidate never gave a strong answer, so the interviewer neither probed deeper nor pivoted after detailed responses."
+      },
+      "topic_cap_respected": {
+        "score": 0.0,
+        "comment": "The interviewer asked more than two consecutive questions on the same topic (API design and then schema) repeatedly."
+      },
+      "topic_coverage": {
+        "score": 0.5,
+        "comment": "Only two distinct technical topics (RESTful API design and relational schema) were covered."
+      },
+      "focus_enforcement": {
+        "score": 0.0,
+        "comment": "The interviewer failed to redirect the candidate\u2019s vague answers back to the specific question and lost control of the flow."
+      },
+      "contextual_listening": {
+        "score": 0.0,
+        "comment": "The interviewer never referenced the few technical terms the candidate mentioned and kept asking generic repeated questions."
+      },
+      "difficulty_adapts": {
+        "score": 0.0,
+        "comment": "Question difficulty remained static despite the candidate\u2019s weak responses; no simplification or escalation occurred."
+      },
+      "contradiction_caught": {
+        "score": 1.0,
+        "comment": "The candidate did not contradict themselves, so the interviewer correctly had no contradictions to address."
+      }
+    },
+    {
+      "proper_termination": {
+        "score": 0,
+        "comment": ""
+      },
+      "depth_probing": {
+        "score": 0.0,
+        "comment": "The candidate never gave a strong answer, and the interviewer never probed deeper after any detailed response."
+      },
+      "topic_cap_respected": {
+        "score": 0.0,
+        "comment": "The interviewer asked three consecutive questions on microservices communication before moving to a new topic."
+      },
+      "topic_coverage": {
+        "score": 1.0,
+        "comment": "At least three distinct technical topics (microservices communication, URL\u2011shortening design, database/indexing, API versioning) were covered."
+      },
+      "focus_enforcement": {
+        "score": 0.0,
+        "comment": "The interviewer did not redirect the candidate\u2019s vague or off\u2011topic answers back to the specific question."
+      },
+      "contextual_listening": {
+        "score": 0.0,
+        "comment": "When the candidate mentioned GET/POST and Flask, the interviewer asked a generic follow\u2011up without referencing those details."
+      },
+      "difficulty_adapts": {
+        "score": 0.0,
+        "comment": "The interviewer kept asking equally complex questions despite the candidate\u2019s weak responses, showing no adaptation."
+      },
+      "contradiction_caught": {
+        "score": 1.0,
+        "comment": "The candidate never contradicted themselves, so the interviewer correctly had no contradictions to address."
+      }
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+2026-10-14 12:17:03,735 - InterviewCoach - WARNING - AI_GATEWAY_API_KEY not set — experiment runs will fail.
+2026-10-14 12:17:11,832 - InterviewCoach - INFO - Searching for trends at https://r.jina.ai/https://www.reddit.com/r/cscareerquestions/search/?q=Backend+Engineer+interview+questions&sort=top&t=year
+2026-10-14 12:17:12,856 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+============================================================
+Running experiment: v3-meaningful
+============================================================
+View the evaluation results for experiment: 'v3-meaningful-a0fcefc0' at:
+https://smith.langchain.com/o/76af68c6-e991-45e2-acb8-b0ab3a93bf49/datasets/ce46b841-2001-47e3-9516-a8afaad86abb/compare?selectedSessions=eaf4c51d-2395-4a4d-810c-fc977534d403
+
+
+
+Interviewer: 2026-10-14 12:17:14,585 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through the microservices architecture you designed for a 
+high‑throughput system, focusing on the communication patterns you chose 
+between services and why you selected them?
+
+Interviewer: 2026-10-14 12:17:17,127 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+You mentioned ending up with 47 services after the split. Could you walk me 
+through how you defined the service boundaries and which communication 
+pattern—such as synchronous REST calls, gRPC, event streaming with Kafka, or 
+something else—you settled on for the most latency‑sensitive interactions? What
+were the key factors that led you to choose that pattern?
+
+Interviewer: 2026-10-14 12:17:19,668 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+You’ve mentioned that you’d “use a load balancer” for the latency‑sensitive 
+interactions. Could you walk me through the concrete communication pattern you 
+settled on—e.g., synchronous HTTP/REST, gRPC, or an event‑driven approach—and 
+how the load balancer fits into that design (including any service‑discovery or
+routing considerations you put in place)?
+
+Interviewer: 2026-10-14 12:18:12,220 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through a specific instance where you designed a database 
+schema for a high‑throughput service, detailing the primary entities, the query
+patterns you needed to support, and the indexing strategy you chose to achieve 
+the required performance?
+
+Interviewer: 2026-10-14 12:18:19,795 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Could you describe a caching strategy you’ve implemented for a high‑throughput 
+service, including the type of cache you chose (e.g., Redis, Memcached), how 
+you handled cache invalidation or consistency, and any trade‑offs you 
+considered?
+
+Interviewer: 2026-10-14 12:18:22,344 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Earlier you described a monolithic application that you later split into many 
+services, but now you say you never had a monolith at all. Can you help me 
+reconcile those two statements and clarify the actual starting point of your 
+system architecture?
+
+Interviewer: 2026-10-14 12:19:19,807 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you describe a specific observability setup you implemented for a 
+high‑throughput backend service—what metrics, tracing, and alerting tools you 
+used, how you instrumented the code, and how that helped you detect or diagnose
+a production issue?
+
+Interviewer: 2026-10-14 12:19:22,257 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Earlier you described a monolithic application that you later split into many 
+services, but now you say you never had a monolith. Can you help me reconcile 
+those statements and clarify what the original architecture looked like and why
+you decided to adopt microservices?
+2026-10-14 12:20:23,006 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:20:27,736 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:20:27,755 - InterviewCoach - INFO - Searching for trends at https://r.jina.ai/https://www.reddit.com/r/cscareerquestions/search/?q=Backend+Engineer+interview+questions&sort=top&t=year
+2026-10-14 12:21:33,035 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:22:31,046 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+Interviewer: 2026-10-14 12:22:33,114 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through how you’d design a microservices architecture to 
+support a high‑traffic public API, including how you’d handle service 
+discovery, load balancing, and data consistency across services?
+
+Interviewer: 2026-10-14 12:23:30,753 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+You mentioned using Kafka with an outbox pattern to achieve exactly‑once 
+delivery. If one of the downstream microservices that consumes those events 
+experiences a sudden spike and starts lagging, how does your architecture 
+ensure that the producer side doesn’t get back‑pressured or cause message 
+buildup, and what safeguards do you have to prevent data inconsistency during 
+that slowdown?
+
+Interviewer: 2026-10-14 12:23:33,189 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+You mentioned the outbox pattern with idempotency keys and a dead‑letter queue 
+to handle poison pills. When a downstream consumer starts lagging and the Kafka
+topic begins to build up, what specific mechanisms did you put in place—such as
+back‑pressure handling, consumer scaling, or throttling—to ensure the producer 
+isn’t overwhelmed, and how do you verify that those safeguards keep data 
+consistency intact during the slowdown?
+
+Interviewer: 2026-10-14 12:23:35,700 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+What specific back‑pressure or flow‑control technique would you put in 
+place—such as adjusting producer commit intervals, using Kafka’s pause/resume 
+APIs, or implementing a buffering layer—to ensure the producer isn’t 
+overwhelmed when a downstream consumer starts lagging?
+
+Interviewer: 2026-10-14 12:24:33,290 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+When you switched to online DDL tools and blue‑green deployments for that 200 
+M‑row table migration, how did you verify that the new schema changes wouldn’t 
+introduce regressions in query performance, and what specific metrics or 
+testing steps did you use to ensure latency stayed within target SLAs during 
+the rollout?
+
+Interviewer: 2026-10-14 12:24:35,747 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you give a concrete example of a time you realized you’d over‑engineered a 
+solution, what the consequences were for performance or delivery, and how you 
+refactored it to a simpler, production‑ready design?
+
+Interviewer: 2026-10-14 12:24:38,182 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+You mentioned adding request coalescing to avoid cache stampedes on hot 
+accounts. Can you walk me through the exact implementation you used for that 
+coalescing—what synchronization mechanism or library did you employ, how you 
+bounded the waiting time for concurrent requests, and what metrics you 
+monitored to confirm it reduced latency and load on PostgreSQL?
+
+Interviewer: 2026-10-14 12:25:35,719 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+When you discovered a deadlock despite enforcing a consistent lock order, how 
+did you use pg_locks or other PostgreSQL diagnostics in production to pinpoint 
+the culprit queries, and what automated safeguards did you put in place to 
+prevent similar deadlocks from recurring?
+2026-10-14 12:25:41,447 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:26:40,960 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:26:40,979 - InterviewCoach - INFO - Searching for trends at https://r.jina.ai/https://www.reddit.com/r/cscareerquestions/search/?q=Backend+Engineer+interview+questions&sort=top&t=year
+2026-10-14 12:27:47,834 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:28:44,576 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+Interviewer: 2026-10-14 12:28:46,420 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through how you would design the inter‑service communication 
+between two microservices that need to exchange data frequently, comparing the 
+trade‑offs of using REST over HTTP versus gRPC?
+
+Interviewer: 2026-10-14 12:29:43,836 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Could you describe a simple scenario where two services need to exchange data 
+frequently, and explain which communication method—REST over HTTP or gRPC—you 
+would choose and why?
+
+Interviewer: 2026-10-14 12:29:46,797 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you describe how you would design a relational database schema for a simple
+e‑commerce order system, and explain which indexes you would create to optimize
+the most common query patterns such as retrieving a user's recent orders and 
+looking up order details by order ID?
+
+Interviewer: 2026-10-14 12:29:48,992 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+What specific indexes would you create on the orders table to efficiently 
+support (1) retrieving a user's most recent orders and (2) looking up order 
+details by order ID, and can you explain the reasoning behind each choice?
+
+Interviewer: 2026-10-14 12:30:46,416 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you explain what an in‑memory cache like Redis is used for in a web 
+service, and describe a simple cache‑aside pattern for storing product data 
+while keeping it consistent with the underlying database?
+
+Interviewer: 2026-10-14 12:30:48,838 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Could you outline a high‑level design for a URL‑shortening service, describing 
+the main components (such as API layer, storage, and any background jobs) and 
+the trade‑offs you’d consider when choosing between a relational database and a
+key‑value store for persisting the short‑to‑long URL mappings?
+
+Interviewer: 2026-10-14 12:30:51,514 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+What basic steps would you take to add structured logging to a new backend 
+service, and why is structured logging preferable to plain text logs in a 
+production environment?
+
+Interviewer: 2026-10-14 12:31:49,000 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Why is structured logging often preferred over plain‑text log lines in 
+production systems, and can you give an example of a key piece of information 
+you would include in a structured log entry for a request handling error?
+2026-10-14 12:31:53,744 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:32:52,701 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:32:52,738 - InterviewCoach - INFO - Searching for trends at https://r.jina.ai/https://www.reddit.com/r/cscareerquestions/search/?q=Backend+Engineer+interview+questions&sort=top&t=year
+2026-10-14 12:32:56,496 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:33:51,098 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+Interviewer: 2026-10-14 12:33:52,987 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through how you define service boundaries when breaking a 
+monolithic application into microservices, and what criteria you use to decide 
+where the boundaries should lie?
+
+Interviewer: 2026-10-14 12:33:55,555 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+When you eventually split that monolith into 47 services, what concrete 
+criteria did you use to define each service’s boundary—such as business 
+capability, data ownership, or latency requirements—and how did you validate 
+that those boundaries were appropriate before the rollout?
+
+Interviewer: 2026-10-14 12:34:53,060 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Earlier you mentioned you used concrete criteria like business capabilities and
+data ownership to define the service boundaries, but now you say you would just
+“use a load balancer.” Can you clarify how the load balancer fits into your 
+boundary‑defining strategy, and walk me through the specific steps you took to 
+decide which functionality belonged to each of the 47 new services?
+
+Interviewer: 2026-10-14 12:34:55,741 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through a concrete example of a single piece of functionality 
+you extracted from the monolith—what criteria you applied (such as business 
+capability, data ownership, or latency needs) and how you determined that it 
+should become its own service?
+
+Interviewer: 2026-10-14 12:34:58,136 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Could you walk me through a concrete example where you identified a slow query 
+in a relational database, chose an indexing strategy to address it, and 
+measured the performance improvement?
+
+Interviewer: 2026-10-14 12:35:55,538 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Earlier you described splitting a monolith into many services, but now you say 
+there was never a monolith—can you help me reconcile those two statements?
+
+Interviewer: 2026-10-14 12:35:58,326 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you share a concrete example where you helped align the team around a 
+technical decision—what steps you took, how you measured the impact on system 
+performance, and what the results were?
+
+Interviewer: 2026-10-14 12:36:55,874 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Earlier you described splitting a monolith into many services, but now you say 
+there was never a monolith—can you help me reconcile those two statements? 
+Also, could you walk me through a concrete example where you identified a slow 
+query in a relational database, chose an indexing strategy to address it, and 
+measured the performance improvement?
+2026-10-14 12:37:02,718 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:38:02,334 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:38:02,362 - InterviewCoach - INFO - Searching for trends at https://r.jina.ai/https://www.reddit.com/r/cscareerquestions/search/?q=Backend+Engineer+interview+questions&sort=top&t=year
+2026-10-14 12:39:06,677 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:40:06,559 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+Interviewer: 2026-10-14 12:40:07,749 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through how you’d design a microservice architecture for a 
+high‑traffic API, including the key components you’d choose for service 
+discovery, load balancing, and inter‑service communication?
+
+Interviewer: 2026-10-14 12:40:10,289 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+You mentioned using Kafka with an outbox pattern and PostgreSQL to achieve 
+exactly‑once delivery. Can you walk me through how you handle a scenario where 
+the outbox table write succeeds but the subsequent Kafka publish fails—what 
+mechanisms do you have in place to ensure no messages are lost or duplicated?
+
+Interviewer: 2026-10-14 12:41:07,682 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+When the Kafka publish fails after the outbox row is written, you mentioned 
+using idempotency keys on consumers and a dead‑letter queue. Could you walk me 
+through the retry mechanism you implemented for that failed publish—how do you 
+detect the failure, what triggers the retry, and how do you ensure the 
+consumer’s idempotency key still prevents duplicate processing during those 
+retries?
+
+Interviewer: 2026-10-14 12:41:10,305 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through the concrete steps your service takes when the write to
+the outbox table succeeds but the call to Kafka’s produce API returns an 
+error—what exactly detects that failure, how is the retry scheduled, and how do
+you make sure the outbox record isn’t processed multiple times during those 
+retries?
+
+Interviewer: 2026-10-14 12:41:12,861 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you describe a recent scenario where you had to choose between a relational
+database and a NoSQL store for a new service—what factors did you evaluate, how
+did you model the schema, and what specific query patterns or performance 
+metrics guided your decision?
+
+Interviewer: 2026-10-14 12:42:10,295 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through a specific example where you had to choose between a 
+relational database and a NoSQL store for a new service, detailing the key 
+factors you evaluated—such as data model complexity, query patterns, latency 
+requirements, and scalability concerns—and why you ultimately selected one over
+the other?
+
+Interviewer: 2026-10-14 12:42:12,835 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+You mentioned using Redis with a 30‑second TTL and request‑coalescing to 
+prevent cache‑stampedes on hot accounts. If the underlying PostgreSQL write 
+fails after you’ve already invalidated the cache entry, how do you ensure that 
+subsequent reads don’t serve stale or missing data, and what fallback or 
+reconciliation mechanism do you have in place to keep the cache and database 
+consistent?
+
+Interviewer: 2026-10-14 12:42:15,186 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+When you notice a deadlock in the PostgreSQL logs and use pg_locks to diagnose 
+it, how do you surface that information to your on‑call team in real time, and 
+what automated steps do you take to prevent the same lock ordering issue from 
+recurring in production?
+2026-10-14 12:43:17,262 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:43:21,662 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:43:21,692 - InterviewCoach - INFO - Searching for trends at https://r.jina.ai/https://www.reddit.com/r/cscareerquestions/search/?q=Backend+Engineer+interview+questions&sort=top&t=year
+2026-10-14 12:44:27,562 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:45:25,176 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+Interviewer: 2026-10-14 12:45:27,140 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you walk me through how you would design a simple microservice that exposes
+a RESTful API for creating and retrieving user profiles, including your choices
+for the API contract, data storage, and how it would communicate with other 
+services?
+
+Interviewer: 2026-10-14 12:46:25,559 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+What would the RESTful API contract for the user‑profile service look 
+like—specifically the endpoints, request/response payloads, and any status 
+codes you’d use?
+
+Interviewer: 2026-10-14 12:46:27,007 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+What data store would you choose for persisting the user profiles in this 
+service, and how would you model the schema to support efficient retrieval of a
+user by their ID?
+
+Interviewer: 2026-10-14 12:46:29,693 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+What criteria would you use to decide between a relational database and a NoSQL
+store for persisting user profile data in this service?
+
+Interviewer: 2026-10-14 12:46:32,136 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+When designing a database schema for a read‑heavy user‑profile service, what 
+indexing strategy would you use to efficiently retrieve a user by their ID, and
+how would you evaluate whether that index is providing the expected 
+performance?
+
+Interviewer: 2026-10-14 12:47:29,629 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+What type of index would you create to enable fast lookup of a user profile by 
+its ID, and why is that choice appropriate?
+
+Interviewer: 2026-10-14 12:47:32,132 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you describe how you would make the “create user profile” endpoint 
+idempotent, and what mechanisms you would use to safely handle retries when the
+request is retried due to a transient network failure?
+
+Interviewer: 2026-10-14 12:47:34,653 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Can you explain the difference between using an in‑memory cache like Redis 
+versus a local in‑process cache for speeding up reads of user profiles, and how
+you would decide which one to use?
+2026-10-14 12:48:35,111 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:48:40,681 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-14 12:49:39,217 - httpx2 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+Scoreboard for [v3-meaningful]:
+  adversarial
+    proper_termination: 0
+    depth_probing: 1.0  (After the candidate’s detailed monolith description, the interviewer asked a deeper follow‑up about service boundaries and communication patterns before moving on.)
+    topic_cap_respected: 0.0  (The interviewer asked three consecutive questions on the same microservices communication topic, violating the cap.)
+    topic_coverage: 1.0  (The interview covered microservices design, database schema, caching, observability, and messaging delivery, exceeding three distinct topics.)
+    focus_enforcement: 1.0  (Despite the candidate’s evasive and off‑topic replies, the interviewer repeatedly redirected back to technical questions and kept control.)
+    contextual_listening: 0.5  (The interviewer referenced the candidate’s mention of a load balancer but otherwise asked generic follow‑ups without using many of the candidate’s specific terms.)
+    difficulty_adapts: 0.0  (The question difficulty remained constant and did not simplify after the candidate’s weak or irrelevant answers.)
+    contradiction_caught: 1.0  (The interviewer explicitly called out the candidate’s contradictory statements about the existence of a monolith and asked for clarification.)
+
+  strong
+    proper_termination: 0
+    depth_probing: 1.0  (After each detailed answer the interviewer asked a deeper, more specific follow‑up on the same topic.)
+    topic_cap_respected: 0.5  (The interviewer asked three consecutive questions about Kafka/back‑pressure, exceeding the two‑question cap once.)
+    topic_coverage: 1.0  (At least five distinct technical topics (microservices/Kafka, schema migrations, caching & request coalescing, PostgreSQL deadlocks, OpenTelemetry) were covered.)
+    focus_enforcement: 1.0  (Whenever the candidate drifted, the interviewer redirected the conversation back to the intended subject.)
+    contextual_listening: 0.5  (The interviewer often referenced the candidate’s specific terms (outbox, idempotency, pg_locks, request coalescing) but sometimes asked generic follow‑ups.)
+    difficulty_adapts: 0.5  (The interviewer escalated difficulty after strong answers but did not simplify after weaker or off‑topic replies.)
+    contradiction_caught: 1.0  (The candidate never contradicted themselves, so no contradictions needed to be addressed.)
+
+  weak
+    proper_termination: 0
+    depth_probing: 0.0  (The candidate never provided a strong detailed answer, so the interviewer never had an opportunity to probe deeper on the same topic.)
+    topic_cap_respected: 1.0  (The interviewer never asked three or more consecutive questions on the same topic, staying within a two‑question limit per topic.)
+    topic_coverage: 1.0  (At least five distinct technical topics (inter‑service communication, database schema/indexes, caching, URL‑shortener design, structured logging) were covered.)
+    focus_enforcement: 1.0  (When the candidate gave vague or off‑topic answers, the interviewer repeatedly redirected with clarifying questions, maintaining control of the interview.)
+    contextual_listening: 0.0  (The interviewer never referenced the candidate’s specific terms (e.g., GET, POST, Flask) and asked generic follow‑up questions instead.)
+    difficulty_adapts: 0.0  (Despite the candidate’s weak responses, the interviewer did not simplify or otherwise adjust the difficulty of subsequent questions.)
+    contradiction_caught: 1.0  (The candidate made no contradictions, so the interviewer correctly had no contradictions to address.)
+
+  adversarial
+    proper_termination: 0
+    depth_probing: 0.0  (The interviewer never probed deeper after any candidate answer, even when the candidate gave detailed information.)
+    topic_cap_respected: 0.0  (The interviewer asked four consecutive questions on the same service‑boundary topic, exceeding the two‑question cap.)
+    topic_coverage: 1.0  (At least three distinct technical topics (microservice boundaries, database indexing, team alignment) were addressed.)
+    focus_enforcement: 1.0  (The interviewer repeatedly redirected the candidate back to the asked technical questions despite off‑topic rambling.)
+    contextual_listening: 0.0  (The interviewer asked generic follow‑ups without referencing the specific technologies or details the candidate mentioned.)
+    difficulty_adapts: 0.0  (Question difficulty remained unchanged despite the candidate providing weak or irrelevant answers.)
+    contradiction_caught: 1.0  (The interviewer explicitly called out the candidate's contradictory statements about the monolith and criteria.)
+
+  strong
+    proper_termination: 0
+    depth_probing: 1.0  (The interviewer consistently asked increasingly specific follow‑up questions on the same outbox/Kafka topic before moving on.)
+    topic_cap_respected: 0.0  (Three consecutive questions (Q2‑Q4) all focused on the outbox failure scenario, exceeding the two‑question cap.)
+    topic_coverage: 1.0  (The interview touched on microservice design, outbox/Kafka reliability, relational vs NoSQL choice, Redis caching, PostgreSQL deadlock handling, and observability.)
+    focus_enforcement: 1.0  (When the candidate drifted, the interviewer redirected back to the relevant technical point or moved on purposefully.)
+    contextual_listening: 1.0  (Each follow‑up referenced specific terms the candidate just used (Kafka, outbox, idempotency keys, Redis, pg_locks, OpenTelemetry).)
+    difficulty_adapts: 0.5  (The interviewer escalated difficulty after strong answers but did not simplify after the candidate gave vague or off‑topic replies.)
+    contradiction_caught: 1.0  (The candidate never contradicted themselves, so no contradiction needed to be addressed.)
+
+  weak
+    proper_termination: 0
+    depth_probing: 0.0  (The candidate never gave a strong answer, so the interviewer never had a chance to probe deeper.)
+    topic_cap_respected: 0.0  (Three consecutive questions (data store choice, relational vs NoSQL, indexing) stayed on the same topic, violating the cap.)
+    topic_coverage: 1.0  (The interview covered more than three distinct topics such as microservice design, API contract, storage choice, idempotency, and caching.)
+    focus_enforcement: 1.0  (The interviewer kept the conversation on target and did not let the candidate’s vague answers derail the line of questioning.)
+    contextual_listening: 0.0  (The candidate provided no detailed technical terms, and the interviewer asked only generic follow‑ups without referencing any candidate‑specific language.)
+    difficulty_adapts: 0.0  (Despite the candidate’s weak responses, the interviewer continued with equally challenging questions instead of simplifying.)
+    contradiction_caught: 1.0  (The candidate never contradicted themselves, so the interviewer correctly had no contradictions to address.)
+
+Saved per-persona results -> D:\NextJs Projects\Interview prep agent\Ai_Mock_Interview_Coach\scripts\results_v3-meaningful.json
+
+========================================================================
+FINAL SCOREBOARD — mean judge scores across all personas (0-1 scale)
+========================================================================
+metric                             v3-meaningful
+------------------------------------------------------------------------
+contextual_listening                        0.33
+contradiction_caught                        1.00
+depth_probing                               0.50
+difficulty_adapts                           0.17
+focus_enforcement                           1.00
+proper_termination                          0.00
+topic_cap_respected                         0.25
+topic_coverage                              1.00
+------------------------------------------------------------------------
+OVERALL MEAN                                0.53
+
+API cost ledger: [groq/free-tier] calls=72 in=110,209 out=42,491 cost=$0.0484 / budget=$15.00
+
+Open LangSmith -> Experiments to compare v1/v2/v3/v4.
+EXIT=0
